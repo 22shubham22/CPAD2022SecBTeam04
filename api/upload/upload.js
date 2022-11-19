@@ -21,7 +21,7 @@ const fileFilter = (req ,file ,cb) => {
     }
 } 
 const upload = multer({storage: storage,fileFilter:fileFilter});
-const tess = require('node-tesseract-ocr');
+const tesseract = require('node-tesseract-ocr');
 function recognize(path) {
     const config = {
         lang: "eng",
@@ -29,7 +29,7 @@ function recognize(path) {
         psm: 3,
       };
     
-      tess
+      tesseract
       .recognize(path, config)
       .then((text) => {
         console.log("Result:", text)
@@ -48,7 +48,7 @@ router.get('/',(req,res,next) => {
 });
 
 router.post('/', upload.single('productImage'), (req,res,next) => {
-    recognize(req.file.destination+req.file.filename);
+    recognize(req.file.destination+'/'+req.file.filename);
     console.log(req.file);
     res.status(200).json({
         message: 'handling post req to /upload'
