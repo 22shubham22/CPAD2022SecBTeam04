@@ -1,12 +1,18 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-
-const productRoutes = require('./api/upload/upload');
+const bodyParser = require('body-parser');
+const upload = require('./api/upload/upload');
+const login = require('./api/login/login');
+const signup = require('./api/signup/signup');
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 //routes for api
-app.use('/upload', productRoutes);
+app.use('/upload', upload);
+app.use('/login', login);
+app.use('/signup', signup);
 app.use((req,res,next) => {
     const error = new Error('Not Found');
     error.status  = 404;
