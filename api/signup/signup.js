@@ -9,6 +9,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/signup", {
 });
 router.post("/", (req, res, next) => {
   User.find({email:req.body.email})
+  .exec()
   .then(user => {
     if(user.length >= 1) {return res.status(409).json({ error: "Email is already in use" }); }
     else {
@@ -38,7 +39,13 @@ router.post("/", (req, res, next) => {
             }
           });
     }
-  });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json({
+        message: "data inserted to db failed",
+    });
+  })
   // res.status(200).json({
   //     message: 'handling post req to /signup'
   // })
