@@ -16,7 +16,7 @@ exports.login_post = (req,res,next) => {
     .then(user => {
         if(user.length < 1) {return res.status(401).json({ message: "Failed" });}
         bcrypt.compare(req.body.password,user[0].password,(err,result) => {
-            if (err) {return res.status(401).json({ message: "Authentication Failed" });}
+            if (err) {return res.status(401).json({ message: "Authentication Failed here" });}
             if (result) {
                 const token = jwt.sign({
                     email: user[0].email,

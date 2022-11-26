@@ -1,4 +1,5 @@
 const tesseract = require('node-tesseract-ocr');
+const Tesseract = require('tesseract.js');
 
 exports.upload_get = (req,res,next) => {
     res.status(200).json({
@@ -13,12 +14,17 @@ exports.upload_post = (req,res,next) => {
     })
 };
 
-function recognize(path) {
+async function recognize(path) {
     const config = {
         lang: "eng",
         oem: 1,
         psm: 3,
-      };
+  };
+
+  // const worker = await Tesseract.createWorker();
+  // await worker.loadLanguage('eng');
+  // const { data: { text } } = await worker.recognize(path);
+  // console.log(text);
     
       tesseract
       .recognize(path, config)
