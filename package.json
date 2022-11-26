@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/22shubham22/CPAD2022SecBTeam04#readme",
   "dependencies": {
+    "@google-cloud/vision": "^3.0.1",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "express": "^4.18.2",
@@ -28,6 +29,7 @@
     "multer": "^1.4.5-lts.1",
     "node-tesseract-ocr": "^2.2.1",
     "nodemon": "^2.0.20",
+    "tesseract.js": "^2.1.1",
     "validator": "^13.7.0"
   }
 }
