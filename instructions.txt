@@ -1,1 +1,14 @@
 $env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\hp\Desktop\crossplatform-369812-6c68c2c44e0c.json"
+
+dd.mm.yyyy
+dd.mm.yy
+mm.yyyy
+mm.yy
+
+dd/mm/yyyy
+dd/mm/yy 
+mm/yyyy
+mm/yy
+
+
+
