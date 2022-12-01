@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const checkAuth = require("../middleware/check-auth");
 const UploadController = require('../controller/upload');
+var photoName;
 
 const storage = multer.diskStorage({
     destination : function (req, file, cb) {
@@ -10,7 +11,8 @@ const storage = multer.diskStorage({
     },
     filename : function (req,file, cb) {
         const number = Math.floor(Math.random() * 32525345668);
-        cb(null, 'Image' + number.toString() + '.png');
+        photoName = 'Image' + number.toString() + '.png';
+        cb(null, photoName );
     }
 });
 const fileFilter = (req ,file ,cb) => {

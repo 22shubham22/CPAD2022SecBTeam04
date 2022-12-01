@@ -26,7 +26,6 @@ exports.signup_post = (req, res, next) => {
                 user
                   .save()
                   .then((result) => {
-                    console.log(result);
                     res.status(200).json({
                       message: "data inserted to db successfull",
                     });
