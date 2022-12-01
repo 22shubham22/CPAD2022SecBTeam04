@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const secretKey = process.env.SECRET_KEY || 'secret';
 
 exports.login_get = (req, res, next) => {
-    console.log("hello")
     res.status(200).json({
         message: 'handling post req to /login'
     })

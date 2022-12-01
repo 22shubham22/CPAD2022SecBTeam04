@@ -1,5 +1,4 @@
-const tesseract = require('node-tesseract-ocr');
-const Tesseract = require('tesseract.js');
+const recognize = require('../../vision');
 
 exports.upload_get = (req,res,next) => {
     res.status(200).json({
@@ -7,32 +6,11 @@ exports.upload_get = (req,res,next) => {
     })
 };
 
-exports.upload_post = (req,res,next) => {
-    recognize(req.file.destination+'/'+req.file.filename);
+exports.upload_post = async (req,res,next) => {
+    const expiryDate = await recognize(req.file.destination + '/' + req.file.filename);
+    const expiryYYYY = expiryDate.format("DD/MM/YYYY")
     res.status(200).json({
-        message: 'handling post req to /upload'
+        message: expiryYYYY
     })
 };
-
-async function recognize(path) {
-    const config = {
-        lang: "eng",
-        oem: 1,
-        psm: 3,
-  };
-
-  // const worker = await Tesseract.createWorker();
-  // await worker.loadLanguage('eng');
-  // const { data: { text } } = await worker.recognize(path);
-  // console.log(text);
-    
-      tesseract
-      .recognize(path, config)
-      .then((text) => {
-        console.log("Result:", text)
-      })
-      .catch((error) => {
-        console.log(error.message)
-      });
-}
 
