@@ -19,9 +19,11 @@
   "homepage": "https://github.com/22shubham22/CPAD2022SecBTeam04#readme",
   "dependencies": {
     "@google-cloud/vision": "^3.0.1",
+    "axios": "^1.2.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "express": "^4.18.2",
+    "image-downloader": "^4.3.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
     "mongodb": "^4.11.0",
