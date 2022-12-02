@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const checkAuth = require("../middleware/check-auth");
+// const checkAuth = require("../middleware/check-auth");
 const UploadController = require('../controller/upload');
 var photoName;
 
@@ -27,7 +27,7 @@ const fileFilter = (req ,file ,cb) => {
 const upload = multer({storage: storage,fileFilter:fileFilter});
 
 
-router.get('/', checkAuth, UploadController.upload_get);
-router.post('/', checkAuth, upload.single('productImage'), UploadController.upload_post);
+router.get('/', UploadController.upload_get);
+router.post('/',UploadController.upload_post);
 
 module.exports = router;
